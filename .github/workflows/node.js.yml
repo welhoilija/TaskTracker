@@ -10,6 +10,14 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
     - uses: actions/checkout@v3
 
@@ -23,4 +31,5 @@ jobs:
     - run: npm run build
 
     - name: Deploy to GitHub Pages
+      id: deployment
       uses: actions/deploy-pages@v2.0.4
