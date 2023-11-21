@@ -1,4 +1,4 @@
-name: Node.js CI
+name: CI
 
 on:
   push:
@@ -30,6 +30,11 @@ jobs:
     - run: npm ci
     - run: npm run build
 
+    # New step to upload the build artifact
+    - name: Upload Pages artifact
+      uses: actions/upload-pages-artifact@v2
+
+    # Your existing deployment step
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v2.0.4
