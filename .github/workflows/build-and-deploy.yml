@@ -1,10 +1,9 @@
-name: CI
+name: Deploy Vue App to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: [ main ]  # Trigger on push to main branch
+  workflow_dispatch:    # Allow manual triggering
 
 jobs:
   build-and-deploy:
@@ -19,7 +18,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Check out repository
+      uses: actions/checkout@v3
 
     - name: Use Node.js 20.x
       uses: actions/setup-node@v3
@@ -36,8 +36,11 @@ jobs:
           echo "::warning title=Invalid file permissions automatically fixed::$line"
         done
 
-    - name: Upload Pages artifact
+    - name: Upload artifact
       uses: actions/upload-pages-artifact@v2
       with:
-        path: dist/
+        path: dist
 
+    - name: Deploy
+      if: github.ref == 'refs/heads/main'  # Only deploy if on main branch
+      uses: actions/deploy-pages@v2.0.4
