@@ -33,6 +33,8 @@ jobs:
     # New step to upload the build artifact
     - name: Upload Pages artifact
       uses: actions/upload-pages-artifact@v2
+      with:
+        path: dist
 
     # Your existing deployment step
     - name: Deploy to GitHub Pages
