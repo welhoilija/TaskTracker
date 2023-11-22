@@ -8,8 +8,18 @@ export default {
     },
     data() {
         return {
-            tasks: [],
-            idCounter: 0,
+            tasks: [
+                {
+                    name: 'Welcome to my TODO-App!',
+                    description: '',
+                    due_date: '',
+                    due_time: '',
+                    parent: null,
+                    id: 1,
+                    state: -1
+                }
+            ],
+            idCounter: 1,
         }
     },
     watch: {
@@ -43,22 +53,10 @@ export default {
     mounted() {
         const localTasks = JSON.parse(localStorage.getItem('tasks'))
         if (localTasks.length > 0) {
-            console.log('TASKS FOUND', localTasks)
             this.tasks = localTasks;
             const maxId = localTasks.reduce((max, task) => task.id > max ? task.id : max, 0);
             this.idCounter = maxId + 1;
         } else {
-            console.log('tasdasdasd')
-            this.tasks = [{
-                name: 'Welcome to my TODO-App!',
-                description: '',
-                due_date: '',
-                due_time: '',
-                parent: null,
-                id: 1,
-                state: -1
-            }]
-            this.idCounter = 2;
             localStorage.setItem('tasks', JSON.stringify(this.tasks));
         }
     }

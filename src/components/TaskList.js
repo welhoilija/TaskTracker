@@ -18,12 +18,7 @@ export default {
     },
     computed: {
         tasksToDisplay() {
-            if (this.depth === 0) {
-                console.log(this.tasks.filter(task => !task.parent))
-                return this.tasks.filter(task => !task.parent)
-            } else {
-                return this.subTasks
-            }
+            return this.depth === 0 ? this.tasks.filter(task => !task.parent) : this.subTasks
         }
     },
     methods: {
@@ -40,53 +35,35 @@ export default {
 
         // In the event of a task state change fire this function
         handleTaskStateChanged(updatedTask) {
+            console.log('statechange')
             updatedTask.state = updatedTask.state === 1 ? -1 : 1
-            if (updatedTask.state === 1) {
-                this.updateParentTaskState(updatedTask.parent)
-            } else {
-                this.updateSubTasks(updatedTask.id, false, -1)
-                this.updateParentForNotCompletedTask(updatedTask.parent)
-            }
+            this.updateParentTaskState(updatedTask.parent)
+            this.updateSubTasks(updatedTask.id, updatedTask.state)
         },
 
         updateParentTaskState(parentId) {
             if (parentId !== null) {
                 const siblings = this.collectSubTasks(parentId)
                 const allSiblingsCompleted = siblings.every(sib => sib.state === 1)
-                const newState = allSiblingsCompleted ? 1 : 0
+                const someSiblingsCompleted = siblings.some(sib => sib.state >= 0)
+
+                const newState = allSiblingsCompleted ? 1 : someSiblingsCompleted ? 0 : -1
 
                 let parentTask = this.tasks.find(t => t.id === parentId)
                 parentTask.state = newState
-
-                this.updateParentTaskState(parentTask.parent)
-            }
-        },
-        updateParentForNotCompletedTask(parentId) {
-            if (parentId !== null) {
-                // Get the parent task
-                const parent = this.tasks.find(t => t.id === parentId)
-                if (parent) {
-                    const siblings = this.tasks.filter(t => t.parent === parentId)
-                    // Check if there is a task that's not completed and change the state accordingly.
-                    const anyNotCompleted = siblings.some(sib => sib.state === -1)
-                    const newState = anyNotCompleted ? -1 : 0
-
-                    parent.state = newState
-
-                    this.updateParentForNotCompletedTask(parent.parent)
+                if (parentTask.parent) {
+                    this.updateParentTaskState(parentTask.parent)
                 }
             }
         },
-        updateSubTasks(taskId, excludeSelf, newState) {
+        updateSubTasks(taskId, newState) {
             const subTasks = this.collectSubTasks(taskId)
-            subTasks.forEach(subTask => {
-                if (!excludeSelf || subTask.id !== taskId) {
-                    if (subTask.state !== newState) {
-                        subTask.state = newState
-                        this.updateSubTasks(subTask.id, false, newState)
-                    }
-                }
-            })
+            if (subTasks.length > 0) {
+                subTasks.forEach(subTask => {
+                    subTask.state = newState
+                    this.updateSubTasks(subTask.id, false, newState)
+                })
+            }
         },
     },
 }
