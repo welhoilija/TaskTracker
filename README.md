@@ -32,7 +32,7 @@ Follow these instructions to set up a local development environment.
 ### Installation
 
 1. Clone the repository:
-git clone [https://github.com/welhoilija/tasktracker.git](https://github.com/welhoilija/tasktracker.git): [https://github.com/welhoilija/tasktracker.git](https://github.com/welhoilija/tasktracker.git)
+git clone git@github.com:welhoilija/TaskTracker.git
 
 2. Install the dependencies
 npm install
