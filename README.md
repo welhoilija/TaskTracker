@@ -18,7 +18,7 @@ TaskTracker is deployed on GitHub Pages, providing a reliable and fast hosting s
 
 ## Live Demo
 
-Experience TaskTracker in action: [TaskTracker Live Demo](https://tasks.tuomaskangas.com)
+Experience TaskTracker in action: [TaskTracker](https://tasks.tuomaskangas.com)
 
 ## Getting Started
 
