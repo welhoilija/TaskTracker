@@ -1,8 +1,8 @@
-import { defineComponent, type PropType } from "vue";
-import type { Task } from "../types/Task";
+import { defineComponent, type PropType } from 'vue'
+import type { Task } from '../types/Task'
 
 export default defineComponent({
-  name: "UpdateForm",
+  name: 'UpdateForm',
   props: {
     parentId: {
       type: Number as PropType<number | null>,
@@ -13,20 +13,20 @@ export default defineComponent({
       required: true,
     },
   },
-  data() {
+  data () {
     return {
       isModalOpen: false,
-    };
+    }
   },
   methods: {
-    updateTask() {
-      this.closeModal();
+    updateTask () {
+      this.closeModal()
     },
-    openModal() {
-      this.isModalOpen = true;
+    openModal () {
+      this.isModalOpen = true
     },
-    closeModal() {
-      this.isModalOpen = false;
+    closeModal () {
+      this.isModalOpen = false
     },
   },
-});
+})
