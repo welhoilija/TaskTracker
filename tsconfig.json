@@ -2,6 +2,7 @@
     "extends": "@vue/tsconfig/tsconfig.json",
     "compilerOptions": {
         "strict": true,
+        "allowJs": true,
         "noImplicitAny": true,
         "strictNullChecks": true,
         "strictFunctionTypes": true,
