@@ -19,7 +19,7 @@ export default {
                     state: -1
                 }
             ],
-            idCounter: 1,
+            idCounter: 2,
         }
     },
     watch: {
@@ -35,7 +35,8 @@ export default {
             this.$refs.creationForm.openModal();
         },
         handleTaskCreated(newTask) {
-            newTask.id = this.idCounter++
+            this.idCounter++
+            newTask.id = this.idCounter
             this.tasks.push(newTask)
         },
         handleTaskDeleted(deletedTask) {

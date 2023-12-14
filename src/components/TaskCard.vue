@@ -1,14 +1,14 @@
 <template>
     <div class="task" :class="taskStateStyling">
         <div class="task-text">
-            <b> {{ task.id }} – {{ task.name }} </b>
+            <b> {{ task.name }} </b>
             {{ taskDueDate }}
         </div>
         <div class="actions">
             <button v-if="allowDescendants" class="button done" :title="'Create new subtask'" @click="createNewDescendant(task.id)">
                 +
             </button>
-            <CreationForm  :parent-id="task.id" ref="subTaskCreationForm" @taskCreated="handleTaskCreated" />
+            <CreationForm :parent-id="task.id" :parent-name="task.name" ref="subTaskCreationForm" @taskCreated="handleTaskCreated" />
             <button class="button done" :title="'Mark as done'" @click="switchState()">
                 ✓
             </button>
