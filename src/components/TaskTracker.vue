@@ -9,7 +9,7 @@
     <TaskList :tasks="tasks" @taskCreated="handleTaskCreated" @taskDeleted="handleTaskDeleted" />
 </template>
 
-<script src="./TaskTracker.js" />
+<script lang="ts" src="./TaskTracker.tsx" />
 <style>
 body {
     max-width: 50em;

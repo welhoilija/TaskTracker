@@ -30,7 +30,7 @@
     </div>
 </template>
   
-<script src="./CreationForm.js"></script>
+<script lang="ts" src="./CreationForm.tsx"></script>
   
 <style>
 .modal-overlay {

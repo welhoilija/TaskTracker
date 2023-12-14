@@ -30,4 +30,4 @@
     </div>
 </template>
   
-<script src="./UpdateForm.js"></script>
+<script src="./UpdateForm.tsx"></script>

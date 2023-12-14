@@ -25,7 +25,7 @@
     </div>
 </template>
 
-<script src="./TaskCard.js" />
+<script lang="ts" src="./TaskCard.tsx" />
 
 <style scoped>
 li {

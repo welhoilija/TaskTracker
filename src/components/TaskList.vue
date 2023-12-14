@@ -22,4 +22,4 @@
     </ul>
 </template>
 
-<script src="./TaskList.js" />
+<script lang="ts" src="./TaskList.tsx" />
