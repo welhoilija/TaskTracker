@@ -2,6 +2,10 @@ export default {
     props: {
         parentId: {
             type: [Number, null],
+            default: null,
+        },
+        parentName: {
+            type: [String, null],
             default: null
         }
     },

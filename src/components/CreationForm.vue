@@ -2,7 +2,7 @@
     <div class="modal-overlay" v-show="isModalOpen" @click.self="closeModal">
         <div class="modal-content">
             <span class="close" @click="closeModal">X</span>
-            <h2>Create New Task {{ parentId ? "| Parent task: " + parentId : '' }}</h2>
+            <h2>Create New Task {{ parentName ? "| Parent task: " + parentName : '' }}</h2>
 
             <form @submit.prevent="submitTask">
                 <div class="form-group">
