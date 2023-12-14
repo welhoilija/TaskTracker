@@ -1,10 +1,10 @@
-import { defineComponent, type PropType } from "vue";
-import type { Task } from "../types/Task";
+import { defineComponent, type PropType } from 'vue'
+import type { Task } from '../types/Task'
 
 type ComponentData = {
-  isModalOpen: boolean;
-  task: Task;
-};
+  isModalOpen: boolean
+  task: Task
+}
 
 export default defineComponent({
   props: {
@@ -17,39 +17,39 @@ export default defineComponent({
       default: null,
     },
   },
-  data(): ComponentData {
+  data (): ComponentData {
     return {
       isModalOpen: false,
       task: {
-        name: "",
-        description: "",
-        due_date: "",
-        due_time: "",
+        name: '',
+        description: '',
+        due_date: '',
+        due_time: '',
         parent: this.parentId,
         id: NaN,
         state: -1,
       },
-    };
+    }
   },
   methods: {
-    submitTask() {
-      this.$emit("taskCreated", this.task);
-      this.closeModal();
+    submitTask () {
+      this.$emit('taskCreated', this.task)
+      this.closeModal()
       this.task = {
-        name: "",
-        description: "",
-        due_date: "",
-        due_time: "",
+        name: '',
+        description: '',
+        due_date: '',
+        due_time: '',
         parent: this.parentId,
         id: NaN,
         state: -1,
-      };
+      }
     },
-    openModal() {
-      this.isModalOpen = true;
+    openModal () {
+      this.isModalOpen = true
     },
-    closeModal() {
-      this.isModalOpen = false;
+    closeModal () {
+      this.isModalOpen = false
     },
   },
-});
+})
