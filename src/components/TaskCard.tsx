@@ -34,10 +34,10 @@ export default defineComponent({
       return taskSymbol[this.task.state]
     },
     taskDueDate (): string {
-      if (this.task.due_date == null) {
+      if (!this.task.due_date) {
         return 'No due date'
       }
-
+      console.log(this.task.due_date)
       const dueDate = new Date(this.task.due_date)
       const formattedDate = dueDate.toISOString().substring(0, 10) // yyyy-mm-dd
       const formattedTime = this.task.due_time
