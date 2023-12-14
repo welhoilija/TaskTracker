@@ -52,7 +52,7 @@ export default {
     },
     mounted() {
         const localTasks = JSON.parse(localStorage.getItem('tasks'))
-        if (localTasks.length > 0) {
+        if (localTasks !== null && localTasks.length > 0) {
             this.tasks = localTasks;
             const maxId = localTasks.reduce((max, task) => task.id > max ? task.id : max, 0);
             this.idCounter = maxId + 1;
