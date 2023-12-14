@@ -1,47 +1,55 @@
-export default {
-    props: {
-        parentId: {
-            type: [Number, null],
-            default: null,
-        },
-        parentName: {
-            type: [String, null],
-            default: null
-        }
+import { defineComponent, type PropType } from "vue";
+import type { Task } from "../types/Task";
+
+type ComponentData = {
+  isModalOpen: boolean;
+  task: Task;
+};
+
+export default defineComponent({
+  props: {
+    parentId: {
+      type: Number as PropType<number | null>,
+      default: null,
     },
-    data() {
-        return {
-            isModalOpen: false,
-            task: {
-                name: '',
-                description: '',
-                due_date: '',
-                due_time: '',
-                parent: this.parentId,
-                id: null,
-                state: -1
-            }
-        }
+    parentName: {
+      type: String as PropType<string | null>,
+      default: null,
     },
-    methods: {
-        submitTask() {
-            this.$emit('taskCreated', this.task)
-            this.closeModal()
-            this.task = {
-                name: '',
-                description: '',
-                due_date: '',
-                due_time: '',
-                parent: this.parentId,
-                id: null,
-                state: -1
-            }
-        },
-        openModal() {
-            this.isModalOpen = true
-        },
-        closeModal() {
-            this.isModalOpen = false
-        },
-    }
-}
+  },
+  data(): ComponentData {
+    return {
+      isModalOpen: false,
+      task: {
+        name: "",
+        description: "",
+        due_date: "",
+        due_time: "",
+        parent: this.parentId,
+        id: NaN,
+        state: -1,
+      },
+    };
+  },
+  methods: {
+    submitTask() {
+      this.$emit("taskCreated", this.task);
+      this.closeModal();
+      this.task = {
+        name: "",
+        description: "",
+        due_date: "",
+        due_time: "",
+        parent: this.parentId,
+        id: NaN,
+        state: -1,
+      };
+    },
+    openModal() {
+      this.isModalOpen = true;
+    },
+    closeModal() {
+      this.isModalOpen = false;
+    },
+  },
+});

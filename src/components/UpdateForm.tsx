@@ -1,32 +1,32 @@
-export default {
-    name: 'UpdateForm',
-    props: {
-        parentId: {
-            type: [Number, null],
-            default: null
-        },
-        task: {
-            name: String,
-            description: String | null,
-            due_date: String | null,
-            due_time: String | null,
-            parent: Number | null,
-        }
+import { defineComponent, type PropType } from "vue";
+import type { Task } from "../types/Task";
+
+export default defineComponent({
+  name: "UpdateForm",
+  props: {
+    parentId: {
+      type: Number as PropType<number | null>,
+      default: null,
     },
-    data() {
-        return {
-            isModalOpen: false,
-        }
+    task: {
+      type: Object as PropType<Task>,
+      required: true,
     },
-    methods: {
-        updateTask() {
-            this.closeModal()
-        },
-        openModal() {
-            this.isModalOpen = true
-        },
-        closeModal() {
-            this.isModalOpen = false
-        },
-    }
-}
+  },
+  data() {
+    return {
+      isModalOpen: false,
+    };
+  },
+  methods: {
+    updateTask() {
+      this.closeModal();
+    },
+    openModal() {
+      this.isModalOpen = true;
+    },
+    closeModal() {
+      this.isModalOpen = false;
+    },
+  },
+});
