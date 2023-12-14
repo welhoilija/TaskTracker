@@ -1,0 +1,26 @@
+env:
+  browser: true
+  es2022: true
+extends:
+  - standard-with-typescript
+  - plugin:vue/vue3-essential
+parser: "vue-eslint-parser"
+parserOptions:
+  parser: "@typescript-eslint/parser"
+  ecmaVersion: latest
+  sourceType: "module"
+  project: "./tsconfig.json"
+  extraFileExtensions: [".vue"]
+plugins:
+  - vue
+  - "@typescript-eslint"
+rules: {
+  "comma-dangle": "off",
+  "@typescript-eslint/comma-dangle": 0,
+  "@typescript-eslint/consistent-type-definitions": [
+    "error",
+    "type"
+  ],
+  "quote-props": ["error", "consistent"],
+  "@typescript-eslint/strict-boolean-expressions": 0
+}
