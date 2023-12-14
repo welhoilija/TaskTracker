@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import TaskTracker from "./components/TaskTracker.vue";
+import TaskTracker from './components/TaskTracker.vue'
 </script>
 
 <template>
