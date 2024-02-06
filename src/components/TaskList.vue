@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="list-none p-0 m-0">
     <li
       v-for="task in tasksToDisplay"
       :key="task.id"

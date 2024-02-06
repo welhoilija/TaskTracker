@@ -21,18 +21,11 @@ jobs:
     - name: Check out repository
       uses: actions/checkout@v3
 
-    - name: Use Node.js 20.x
-      uses: actions/setup-node@v3
-      with:
-        node-version: 20.x
-        cache: 'npm'
+    - uses: oven-sh/setup-bun@v1
 
-    - run: npm ci
-
-    - name: Lint
-      run: npm run lint
-
-    - run: npm run build
+    - run: bun install
+    - run: bun run lint
+    - run: bun run build
 
     - name: Fix permissions
       run: |

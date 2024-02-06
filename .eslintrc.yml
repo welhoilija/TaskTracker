@@ -24,3 +24,6 @@ rules: {
   "quote-props": ["error", "consistent"],
   "@typescript-eslint/strict-boolean-expressions": 0
 }
+ignorePatterns: {
+  "tailwind.config.js"
+}

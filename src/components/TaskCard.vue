@@ -1,13 +1,15 @@
 <template>
-  <div class="task" :class="taskStateStyling">
-    <div class="task-text">
+  <div
+    :class="`task flex justify-between items-center mb-2.5 relative pl-5 rounded shadow-md ${taskStateStyling}`"
+  >
+    <div class="task-text flex flex-col justify-center p-1.25">
       <b> {{ task.name }} </b>
       {{ taskDueDate }}
     </div>
-    <div class="actions">
+    <div class="flex space-x-2">
       <button
         v-if="allowDescendants"
-        class="button done"
+        class="button h-10 w-10 bg-green-500 shadow hover:bg-green-700 rounded-md"
         :title="'Create new subtask'"
         @click="createNewDescendant()"
       >
@@ -20,105 +22,58 @@
         @taskCreated="handleTaskCreated"
       />
       <button
-        class="button done"
+        class="button h-10 w-10 bg-green-500 shadow hover:bg-green-700 rounded-md"
         :title="'Mark as done'"
         @click="switchState()"
       >
         ✓
       </button>
 
-      <button class="button edit" :title="'Edit'" @click="editTask()">
+      <button
+        class="button h-10 w-10 bg-yellow-500 shadow hover:bg-yellow-700 rounded-md"
+        :title="'Edit'"
+        @click="editTask()"
+      >
         ✏️
       </button>
       <UpdateForm :task="task" ref="updateForm" />
 
-      <button class="button remove" :title="'Remove'" @click="removeTask()">
+      <button
+        class="button h-10 w-10 bg-red-500 shadow hover:bg-red-700 rounded-md"
+        :title="'Remove'"
+        @click="removeTask()"
+      >
         🗑️
       </button>
     </div>
   </div>
 </template>
 
-<script lang="ts" src="./TaskCard.tsx" />
+<script lang="ts" src="./TaskCard.tsx"></script>
 
 <style scoped>
-li {
-  padding: 5px;
-}
+  .green::before,
+  .yellow::before,
+  .red::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 10px;
+  }
 
-.task {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  position: relative;
-  padding-left: 20px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2);
-}
+  .green::before {
+    background-color: green;
+  }
 
-.task-text {
-  display: flex;
-  flex-direction: column;
-  padding: 5px;
-  justify-content: center;
-}
+  .yellow::before {
+    background-color: yellow;
+  }
 
-.green::before,
-.yellow::before,
-.red::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-  width: 10px;
-}
-
-.green::before {
-  background-color: green;
-}
-
-.yellow::before {
-  background-color: yellow;
-}
-
-.red::before {
-  background-color: red;
-}
-
-.remove {
-  background-color: red;
-  width: 50px;
-  color: whitesmoke;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
-
-.remove:hover {
-  background-color: crimson;
-}
-
-.edit {
-  background-color: yellow;
-  width: 50px;
-  color: whitesmoke;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
-
-.edit:hover {
-  background-color: rgb(186, 186, 0);
-}
-
-.done {
-  background-color: green;
-  width: 50px;
-  color: whitesmoke;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
-
-.done:hover {
-  background-color: rgb(0, 106, 25);
-}
+  .red::before {
+    background-color: red;
+  }
 </style>

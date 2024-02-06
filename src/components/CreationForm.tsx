@@ -10,12 +10,12 @@ export default defineComponent({
   props: {
     parentId: {
       type: Number as PropType<number | null>,
-      default: null,
+      default: null
     },
     parentName: {
       type: String as PropType<string | null>,
-      default: null,
-    },
+      default: null
+    }
   },
   data (): ComponentData {
     return {
@@ -27,8 +27,8 @@ export default defineComponent({
         due_time: '',
         parent: this.parentId,
         id: NaN,
-        state: -1,
-      },
+        state: -1
+      }
     }
   },
   methods: {
@@ -42,7 +42,7 @@ export default defineComponent({
         due_time: '',
         parent: this.parentId,
         id: NaN,
-        state: -1,
+        state: -1
       }
     },
     openModal () {
@@ -50,6 +50,6 @@ export default defineComponent({
     },
     closeModal () {
       this.isModalOpen = false
-    },
-  },
+    }
+  }
 })

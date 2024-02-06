@@ -2,6 +2,7 @@ import TaskList from './TaskList.vue'
 import CreationForm from './CreationForm.vue'
 import { defineComponent } from 'vue'
 import type { Task } from '../types/Task'
+import DarkModeToggle from './DarkModeToggle.vue'
 
 type ComponentData = {
   tasks: Task[]
@@ -12,6 +13,7 @@ export default defineComponent({
   components: {
     TaskList,
     CreationForm,
+    DarkModeToggle,
   },
   data (): ComponentData {
     return {
