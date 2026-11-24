@@ -12,14 +12,6 @@ TaskTracker is a powerful task management application designed to streamline you
 - **Modular Component Structure**: Encapsulates functionality within components for clarity and reusability.
 - **Interactive Task Management**: Supports task creation, editing, and nested subtasks with parent-child relationships.
 
-## Deployment
-
-TaskTracker is deployed on GitHub Pages, providing a reliable and fast hosting solution directly from your repository. GitHub Actions are configured for continuous deployment, automatically updating the live application with changes from your main branch.
-
-## Live Demo
-
-Experience TaskTracker in action: [TaskTracker](https://tasks.tuomaskangas.com)
-
 ## Getting Started
 
 Follow these instructions to set up a local development environment.
