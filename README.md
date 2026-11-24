@@ -57,6 +57,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 
-https://tuomaskangas.com
+https://kangasventures.fi
 Project Repository: [https://github.com/welhoilija/tasktracker](https://github.com/welhoilija/tasktracker)
 
